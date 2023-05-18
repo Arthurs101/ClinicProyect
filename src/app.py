@@ -3,7 +3,7 @@ from .config import DevelopmentConfig, config
 from werkzeug.security import check_password_hash
 from sqlalchemy.sql import text
 import os
-from .models import db, Usuario, Paciente, Medico, Enfermedad, UtencilioMed, Lugar, Usuario, Inventario, Historial
+from .models import db
 
 # Commit para backend
 app=Flask(__name__)
