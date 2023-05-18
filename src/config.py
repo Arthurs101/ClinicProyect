@@ -1,7 +1,7 @@
 import secrets
 secret_key = secrets.token_hex(32)
 
-class DevelopmentConfig():
+class DevelopmentConfig:
     DEBUG = True
     endpoint = 'db.oljlqfiyjvrhxbglskta.supabase.co'
     username = 'postgres'
@@ -13,6 +13,4 @@ class DevelopmentConfig():
     SECRET_KEY = secrets.token_hex(32)
 
     
-config = {
-    'development': DevelopmentConfig
-}
+config = DevelopmentConfig()
