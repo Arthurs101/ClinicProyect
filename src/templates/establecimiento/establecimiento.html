@@ -1,0 +1,255 @@
+<!DOCTYPE html>
+
+{% extends 'base.html' %}
+
+{% block title %}Main{% endblock %}
+
+{% block customCSS %}
+<link rel="stylesheet" href="{{ url_for('static', filename='css/auth-css/main.css') }}">
+<link rel="stylesheet" href="{{ url_for('static', filename='css/dashboard.css') }}">
+<link rel="stylesheet" href="{{ url_for('static', filename='css/establecimiento.css') }}">
+<link rel="stylesheet" href="{{ url_for('static', filename='css/global.css') }}">
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@200;400;600&display=swap" rel="stylesheet">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@200;300;500&display=swap" rel="stylesheet">
+{% endblock %}
+
+{% block body %}
+<!DOCTYPE html>
+<html lang="es">
+<header class="header-top flex-row" style="background-color: #4b7fbd;">
+    <img class="logo-img" src="static\img\logoBlanco.png">
+    <div class=" flex-row encabezado ">
+        <!--Inicio-->
+        <a href="{{ url_for('inicio') }}"><p class="padR4 hover-p padT1">Inicio</p></a>
+        <!--Establecimientos-->
+        <a href="{{ url_for('establecimientos') }}"><p class="padR4 hover-p padT1">Establecimientos</p></a>
+        <!--Medicamentos-->
+        <a href="{{ url_for('medicamentos') }}"><p class="padR4 hover-p padT1">Historial</p></a>
+        <!--Pacientes-->
+        <a href="{{ url_for('paciente') }}"><p class="padR4 hover-p padT1">Pacientes</p></a>
+        <!--Estadisticas-->
+        <a href="{{ url_for('estadisticas') }}"><p class="padR4 hover-p padT1">Estadísticas</p></a>
+        <!--Cerrar Sesion-->
+        <a href="logout"><p class="padR4 hover-p padT1">Cerrar sesion</p></a>
+        <!--Icono Usuario-->
+          <div class="profile-img-container">
+            <img src="static\img\doc.jpg" alt="Perfil de usuario" class="profile-img">
+        </div>
+          
+    </div>
+
+</header>
+<body class="center">
+
+    <!--Pestaña info pacientes-->
+    <div class="center flex-column">
+        
+        <h3 class="titulo">Establecimiento:</h3>
+
+        <div style="display: flex; flex-direction: row;">
+          <div class="flex-row establecimientoTitulos">
+              <p class=" inventario" id="btn-inventario">Inventario</p>
+              <p class="personal pad" id="btn-personal">Personal</p>
+              <p class="personal " id="btn-usuarios">Usuarios</p>
+          </div>
+          <div class="flex-row establecimientoTituloAlerta"  id="btn-alerta">
+            <img src="static\img\alert.png" alt="" style="width: 90%;">
+          </div>
+        </div>
+
+
+        <div class="padT3 Organiza-establ" style=" display: true;">
+            <h2>Organiza tu establecimiento</h2>
+        </div>
+        <!--Tabla de inventario-->
+        <div class="margin tabla-inventario"  style="display: none;">
+            <table>
+              <thead>
+                <tr>
+                  <th>Establecimiento</th>
+                  <th>Utencilios/Medicamentos</th>
+                  <th>Cantidad</th>
+                  <th>Expiración</th>
+                </tr>
+              </thead>
+              <tbody>
+                {% for prod in inventario %}
+                  <tr>
+                    <td>{{ prod.lugar }}</td>
+                    <td>{{ prod.nombre }}</td>
+                    <td>{{ prod.cantidad }}</td>
+                    <td>{{ prod.expiracion }}</td>
+                  </tr>
+
+
+                {% endfor %}
+                <!-- Agrega más filas aquí siguiendo el mismo formato -->
+              </tbody>
+            </table>
+            <a href="{{url_for('agregarInventario')}}" style="display: flex; justify-content: right; margin-top: 1rem;">
+              <button style="background-color: #43BF5A; margin-bottom: 2rem; width: 20%;" >
+                <img src="static\img\iconAdd.png" alt="" style="width: 25%;">
+                <span>Agregar</span>
+              </button>
+            </a>    
+          </div>
+
+          <!--Tabla de personal-->
+          <div class="margin-personal tabla-personal"  style="display: none;">
+            <table>
+              <thead>
+                <tr>
+                  <th>ID</th>
+                  <th>Nombre</th>
+                  <th>Dirección</th>
+                  <th>Teléfono</th>
+                  <th># Colegiado</th>
+                  <th>Especialidad</th>
+                  <th>Establecimiento</th>
+                  <th>Guardar</th>
+                </tr>
+              </thead>
+              <tbody>
+                {% for medico in personal %}
+                  <tr>
+                    <form action="{{ url_for('establecimientos')}}"  method="POST">
+                        <td><textarea class="inputs-establecimiento" name="idmedico" id="" rows="2" style="width: 100%; resize: none;">{{ medico.id_medico }}</textarea></td>
+                        <td><textarea class="inputs-establecimiento" name="nombre" id="" rows="2" style="width: 100%; resize: none;">{{ medico.nombre }}</textarea></td>
+                        <td><textarea class="inputs-establecimiento" name="direccion" id="" rows="2" style="width: 100%; resize: none;">{{ medico.direccion }}</textarea></td>
+                        <td><textarea class="inputs-establecimiento" name="telefono" id="" rows="2" style="width: 100%; resize: none;">{{ medico.telefono }}</textarea></td>
+                        <td><textarea class="inputs-establecimiento" name="numcolegiado" id="" rows="2" style="width: 100%; resize: none;">{{ medico.numcolegiado }}</textarea></td>
+                        <td><textarea class="inputs-establecimiento" name="especialidad" id="" rows="2" style="width: 100%; resize: none;">{{ medico.especialidad }}</textarea></td>
+                        <td><textarea class="inputs-establecimiento" name="lugar" id="" rows="2" style="width: 100%; resize: none;">{{ medico.id_lugar }}</textarea></td>
+
+                      <td>
+                        <input type="hidden" name="identificador" value="personal">
+                        <input class="inputEdit" value="Guardar" placeholder="Editar" type="submit">        
+                      </td>
+                    </form>
+                  </tr>
+                {% endfor %}
+              </tbody>
+            </table>
+          </div>
+
+        <!--Tabla de Usuarios-->
+        <div class="margin tabla-usuarios"  style="display: none;">
+          <table>
+            <thead>
+              <tr>
+                  <th>ID</th>
+                  <th>Usuario</th>
+                  <th>Contraseña</th>
+                  <th>Guardar</th>
+                </tr>
+            </thead>
+            <tbody>
+              {% for usuario in usuarios %}
+                <tr>
+                  <form action="{{ url_for('establecimientos')}}"  method="POST">
+                    <td><textarea class="inputs-establecimiento" name="id" id="" rows="2" style="width: 100%; resize: none;">{{ usuario.id_medico }}</textarea></td>
+                    <td><textarea class="inputs-establecimiento" name="usuario" id="" rows="2" style="width: 100%; resize: none;">{{ usuario.usuario }}</textarea></td>
+                    <td><textarea class="inputs-establecimiento" name="password" id="" rows="2" style="width: 100%; resize: none;">{{ usuario.password }}</textarea></td>
+                    
+                    <td>
+                      <input type="hidden" name="identificador" value="usuario">
+                      <input class="inputEdit" value="Guardar" placeholder="Editar" type="submit">        
+                    </td>
+                  </form>
+                </tr>
+              {% endfor %}
+            </tbody>
+          </table>
+        </div>
+
+        <!--Alerta-->
+        <div class="alerta-establ" style="display: none;">
+          <h2>Medicamentos Necesarios </h2>
+          <p>Se ha detectado que el inventario de tu establecimiento está por debajo de lo recomendado</p>
+          <table>
+            <thead>
+              <tr>
+                  {% for i in ColumnInventarioAlerta %}
+                    <th>{{ i }}</th>
+                  {% endfor %}
+                </tr>
+            </thead>
+            <tbody>
+              {% for prod in alerta %}
+                <tr>
+                  <td>{{ prod.nombre }}</td>
+                  <td>{{ prod.cantidad }}</td>
+                  <td>{{ prod.dias_habiles }}</td>
+                </tr>
+              {% endfor %}
+            </tbody>
+          </table>
+        </div>
+    </div>
+    
+<script>
+    
+    document.addEventListener('DOMContentLoaded', () => {
+    const btnInventario = document.querySelector('#btn-inventario');
+    const btnPersonal = document.querySelector('#btn-personal');
+    const btnUsuario = document.querySelector('#btn-usuarios');
+    const btnAlerta = document.querySelector('#btn-alerta');
+    const tablaInventario = document.querySelector('.tabla-inventario');
+    const tablaPersonal = document.querySelector('.tabla-personal');
+    const tablaUsuarios = document.querySelector('.tabla-usuarios');
+    const textOrganiza = document.querySelector('.Organiza-establ');
+    const textAlerta = document.querySelector('.alerta-establ');
+
+    btnInventario.addEventListener('click', () => {
+        tablaInventario.style.display = 'block';
+        tablaPersonal.style.display = 'none';
+        tablaInventario.style.display = 'true';
+        textOrganiza.style.display = 'none';
+        tablaUsuarios.style.display = 'none';
+        textAlerta.style.display = 'none';
+
+
+    });
+
+    btnPersonal.addEventListener('click', () => {
+        tablaPersonal.style.display = 'block';
+        tablaInventario.style.display = 'none';
+        tablaPersonal.style.display = 'true';
+        textOrganiza.style.display = 'none';
+        tablaUsuarios.style.display = 'none';
+        textAlerta.style.display = 'none';
+
+
+    });
+
+    btnUsuario.addEventListener('click', () => {
+        tablaUsuarios.style.display = 'block';
+        tablaInventario.style.display = 'none';
+        tablaUsuarios.style.display = 'true';
+        textOrganiza.style.display = 'none';
+        tablaPersonal.style.display = 'none';
+        textAlerta.style.display = 'none';
+    });
+
+    btnAlerta.addEventListener('click', () => {
+        textAlerta.style.display = 'block';
+        tablaInventario.style.display = 'none';
+        textAlerta.style.display = 'true';
+        textOrganiza.style.display = 'none';
+        tablaPersonal.style.display = 'none';
+        tablaUsuarios.style.display = 'none';
+    });
+});
+
+
+    var texto = document.querySelector('.text-establecimiento');
+    var contenido = texto.innerHTML;
+    if (contenido.length > 20) {
+        texto.innerHTML = contenido.substring(0, 20) + '...';
+    }
+
+
+</script>
+{% endblock %}

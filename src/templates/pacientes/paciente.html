@@ -1,0 +1,96 @@
+{% extends 'base.html' %}
+
+{% block title %}Pacientes{% endblock %}
+
+{% block customCSS %}
+<link rel="stylesheet" href="{{ url_for('static', filename='css/auth-css/main.css') }}">
+<link rel="stylesheet" href="{{ url_for('static', filename='css/dashboard.css') }}">
+<link rel="stylesheet" href="{{ url_for('static', filename='css/global.css') }}">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@200;400;600&display=swap" rel="stylesheet">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@200;300;500&display=swap" rel="stylesheet">
+{% endblock %}
+
+{% block body %}
+<header class="header-top flex-row" style="background-color: #4b7fbd;">
+    <img class="logo-img" src="static\img\logoBlanco.png">
+    <div class=" flex-row encabezado ">
+      <!--Inicio-->
+      <a href="{{ url_for('inicio') }}"><p class="padR4 hover-p padT1">Inicio</p></a>
+      <!--Establecimientos-->
+      <a href="{{ url_for('establecimientos') }}"><p class="padR4 hover-p padT1">Establecimientos</p></a>
+      <!--Medicamentos-->
+      <a href="{{ url_for('medicamentos') }}"><p class="padR4 hover-p padT1">Historial</p></a>
+      <!--Pacientes-->
+      <a href="{{ url_for('paciente') }}"><p class="padR4 hover-p padT1">Pacientes</p></a>
+      <!--Estadisticas-->
+      <a href="{{ url_for('estadisticas') }}"><p class="padR4 hover-p padT1">Estadísticas</p></a>
+      <!--Cerrar Sesion-->
+      <a href="logout"><p class="padR4 hover-p padT1">Cerrar sesion</p></a>
+      <!--Icono Usuario-->
+        <div class="profile-img-container">
+          <img src="static\img\doc.jpg" alt="Perfil de usuario" class="profile-img">
+      </div>
+        
+  </div>
+
+</header>
+<body class="center">
+
+    <!--Pestaña info pacientes-->
+    <div class="center flex-column">
+        
+        <h3 class="titulo">Pacientes:</h3>
+        <div class="margin">
+          <a href="{{url_for('AddPaciente')}}" style="display: flex; justify-content: right;">
+            <button style="background-color: #43BF5A; width: 20%;" >
+              <img src="static\img\iconAdd.png" alt="" style="width: 25%;">
+              <span>Agregar</span>
+            </button>
+          </a>   
+        <table style="margin-bottom: 2rem;">
+          <thead>
+            <tr class="center">
+              <!--{% for i in columns %}
+                <th>{{ i }}</th>
+              {% endfor %}-->
+              <th>ID</th>
+              <th>Nombre</th>
+              <th>Masa Corporal</th>
+              <th>Altura</th>
+              <th>Adicciones</th>
+              <th>Teléfono</th>
+              <th>Dirección</th>
+              <th>Ver Información</th>
+
+            </tr>
+          </thead>
+          <tbody>
+            {% for paciente in pacientes %}
+              <tr>
+                <td>{{ paciente.id_paciente }}</td>
+                <td>{{ paciente.nombre }}</td>
+                <td>{{ paciente.masacorporal }}</td>
+                <td>{{ paciente.altura }}</td>
+                <td>{{ paciente.adicciones }}</td>
+                <td>{{ paciente.telefono }}</td>
+                <td>{{ paciente.direccion }}</td>
+                <td>
+                  <form action="{{ url_for('infoPaciente') }}" method="POST" >
+                    <input type="hidden" name="id_paciente" value="{{ paciente.id_paciente }}">
+                    <input class="inputEdit" value="Ver información" placeholder="Editar" type="submit">
+                  </form>
+                </td>            
+              </tr>
+            {% endfor%}
+            <!-- Agrega más filas aquí siguiendo el mismo formato -->
+          </tbody>
+        </table>
+      </div>
+    </div>
+
+
+{% endblock %}
