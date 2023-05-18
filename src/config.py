@@ -2,7 +2,6 @@ import secrets
 secret_key = secrets.token_hex(32)
 
 class DevelopmentConfig:
-    DEBUG = True
     endpoint = 'db.oljlqfiyjvrhxbglskta.supabase.co'
     username = 'postgres'
     password = 'BT7274DEPLOY'

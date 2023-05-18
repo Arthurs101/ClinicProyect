@@ -1,13 +1,14 @@
 from flask import Flask, render_template, request, redirect, url_for, flash, session
-from .config import DevelopmentConfig, config
-from werkzeug.security import check_password_hash
+from .config import DevelopmentConfig
 from sqlalchemy.sql import text
 import os
-from .models import db
+from flask_sqlalchemy import SQLAlchemy
+
 
 # Commit para backend
 app=Flask(__name__)
 app.config.from_object(DevelopmentConfig)
+db = SQLAlchemy()
 db.init_app(app)
 id_usuarioActual = 0
 id_lugarActual = 0
