@@ -84,7 +84,11 @@ con esto en la terminal sale el url localhost a ingresar
 >>> models.py (deprecated)
 >>>
 >> .gitattributes
+>> 
 >> .gitignore
+>> 
 >> Procfile
+>> 
 >> README.md
+>> 
 >> requirements.txt
