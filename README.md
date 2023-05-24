@@ -22,8 +22,6 @@ con esto en la terminal sale el url localhost a ingresar
 
 > ## ClinicProyect
 >
->>  ## QueriesImportantes
->> 
 >>  ## src
 >> 
 >>> ### static
@@ -38,6 +36,7 @@ con esto en la terminal sale el url localhost a ingresar
 >>>>>> 
 >>>> #### img
 >>>> 
+>>>> Aqui se almacenan todas las imagenes requeridas
 >>> ### templates
 >>> 
 >>>> #### auth
@@ -83,3 +82,9 @@ con esto en la terminal sale el url localhost a ingresar
 >>> config.py
 >>>
 >>> models.py (deprecated)
+>>>
+>> .gitattributes
+>> .gitignore
+>> Procfile
+>> README.md
+>> requirements.txt
