@@ -1,5 +1,5 @@
 from flask import Flask, render_template, request, redirect, url_for, flash, session
-from .config import DevelopmentConfig
+from config import DevelopmentConfig
 from sqlalchemy.sql import text
 import os
 from flask_sqlalchemy import SQLAlchemy
