@@ -337,7 +337,9 @@ def estadisticas():
 #-----------------------------------------Agregar a Historial----------------------------------------
 @app.route('/AgregarAHistorial')
 def AddHistorial():
-    return render_template('medicamentos/AddHistorial.html')
+    centros = text("""Swelect lugar.nombre from lugar""")
+    values = db.session.execute(centros)
+    return render_template('medicamentos/AddHistorial.html', lugar = values)
 
 #-----------------------------------------Agregar a Paciente----------------------------------------
 @app.route('/AgregarPaciente')

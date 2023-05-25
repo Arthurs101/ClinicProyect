@@ -42,14 +42,10 @@ a:hover{
     width: 30%;
 }
 .container-center {
-    width: 40%;
-    height: 50%;
-    padding: auto;
-    margin: auto;
     justify-content: center;
     text-align: center;
-    margin-top: 10rem;
-    margin-left: 6rem;
+    width: 100%;
+    height: 40%;
 }
 .container-medic{
     padding-top: 6rem;
@@ -59,11 +55,10 @@ a:hover{
     margin: auto;
     justify-content: left;
     text-align: left;
-    margin-top: 10rem;
-    margin-left: 6rem;
+    overflow-wrap: break-word;
 }
 .img-gif{
-    width: 400px;
+    width: 40vw;
 }
 .img-medicamentos{
     width: 500px;
@@ -117,4 +112,10 @@ a:hover{
     width: 100%;
     z-index: 10000;
     background-color: #4987ba;
+}
+@media (min-width: 768px) {
+    .container-center{
+    width: 40%;
+    height: 50%;
+    }
 }

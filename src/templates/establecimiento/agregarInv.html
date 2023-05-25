@@ -57,14 +57,14 @@
                     <input type="text" class="inputPacientes" name="cantidad">
                     <label class="text-inv"> Fecha de expiracion</label>
                     <input type="date" name="expiracion" class="inputPacientes">
-                    <div style="display: flex; flex-direction: row;">
+                    <div id='btn-wrapper-inv'style="display: flex; ">
                         <!--Cancelar-->
-                        <a href="{{url_for('establecimientos')}}" style="border: none; border-radius: 0.5rem; width: 20%; margin-top: 1rem; margin-right: 1rem; text-align: center; background-color: #CE4343;">
+                        <a href="{{url_for('establecimientos')}}" style="border: none; border-radius: 0.5rem; width: 20%; margin-top: 1rem; margin-right: 1rem; text-align: center; background-color: #CE4343; min-width:200px">
                             <button class="btn-info" style="background-color: #4b7ebd00;" > Cancelar</button>
 
                         </a>
                         <!--Agregar a inventario-->
-                        <input  type="submit" class="btn-info" style="border: none; width: 20%; margin-top: 1rem; text-align: center; " value="Agregar">    
+                        <input  type="submit" class="btn-info" style="border: none; width: 20%; margin-top: 1rem; text-align: center; min-width:200px " value="Agregar">    
                     </div>
                 
                 </form>

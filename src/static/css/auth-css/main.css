@@ -31,7 +31,7 @@ body, html {
 .Text-bienvenida{
     padding-left: 6rem;
     padding-top: 6rem;
-    width: 700px;
+    width: 75%;
 }
 .grid-items{
     display: grid;
@@ -41,3 +41,4 @@ body, html {
 .logo-img{
     width: 200px;
 }
+

@@ -11,7 +11,7 @@
 }
 .flex-row{
     display: flex;
-    flex-direction: row;
+    flex-wrap: wrap;
 }
 .flex-column{
     display: flex;
@@ -341,4 +341,42 @@ p{
 .info-list li {
   padding-left: 1rem;
   margin-bottom: 0.25rem;
+}
+
+@media (min-width: 768px){
+  .flex-row{
+  flex-direction: row;
+  flex-wrap: nowrap;
+  }
+  #btn-wrapper-inv{
+    flex-direction: row;
+  }
+}
+@media (max-width: 767px) {
+  .table-header{
+    visibility: hidden;
+  }
+  .table-row{
+    display: flex;
+    flex-direction: column;
+    border: solid 1px rgb(207, 200, 133);
+    min-width: 200px;
+  }
+  #btn-wrapper-inv{
+    flex-wrap:wrap;
+    justify-content: center;
+    align-items: center;
+  }
+  .inputPacientes{
+    width: 90%;
+  }
+  .img-inventario{
+    visibility: hidden;
+  }
+  .form-grid{
+    display: flex;
+    flex-direction: column;
+    flex-wrap: wrap;
+  }
+
 }

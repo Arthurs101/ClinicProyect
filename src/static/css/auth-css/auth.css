@@ -126,11 +126,11 @@ Registrar
 }
 
 .form-container-register {
-  width: 40%;
-  padding: 30px;
+  padding: 1vw;
   background-color: rgba(255, 255, 255, 0.863);
   box-shadow: 0px 0px 5px rgba(0, 0, 0, 0.3);
   border-radius: 5px;
+  max-width: 400px;
 }
 .password-container {
   display: flex;
@@ -141,5 +141,7 @@ Registrar
   background-color: transparent;
   border: none;
   cursor: pointer;
+  position: relative;
+  right: 0vw;
 
 }

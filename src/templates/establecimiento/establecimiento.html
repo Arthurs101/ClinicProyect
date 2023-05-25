@@ -66,7 +66,7 @@
         <!--Tabla de inventario-->
         <div class="margin tabla-inventario"  style="display: none;">
             <table>
-              <thead>
+              <thead class = 'table-header'>
                 <tr>
                   <th>Establecimiento</th>
                   <th>Utencilios/Medicamentos</th>
@@ -76,7 +76,7 @@
               </thead>
               <tbody>
                 {% for prod in inventario %}
-                  <tr>
+                  <tr class= 'table-row'>
                     <td>{{ prod.lugar }}</td>
                     <td>{{ prod.nombre }}</td>
                     <td>{{ prod.cantidad }}</td>
@@ -89,7 +89,7 @@
               </tbody>
             </table>
             <a href="{{url_for('agregarInventario')}}" style="display: flex; justify-content: right; margin-top: 1rem;">
-              <button style="background-color: #43BF5A; margin-bottom: 2rem; width: 20%;" >
+              <button style="background-color: #43BF5A; margin-bottom: 2rem; width: 200px;" >
                 <img src="static\img\iconAdd.png" alt="" style="width: 25%;">
                 <span>Agregar</span>
               </button>
@@ -97,9 +97,9 @@
           </div>
 
           <!--Tabla de personal-->
-          <div class="margin-personal tabla-personal"  style="display: none;">
+          <div class="margin-personal tabla-personal"  style="display: none;" >
             <table>
-              <thead>
+              <thead class = 'table-header'>
                 <tr>
                   <th>ID</th>
                   <th>Nombre</th>
@@ -113,7 +113,7 @@
               </thead>
               <tbody>
                 {% for medico in personal %}
-                  <tr>
+                  <tr class= 'table-row'>
                     <form action="{{ url_for('establecimientos')}}"  method="POST">
                         <td><textarea class="inputs-establecimiento" name="idmedico" id="" rows="2" style="width: 100%; resize: none;">{{ medico.id_medico }}</textarea></td>
                         <td><textarea class="inputs-establecimiento" name="nombre" id="" rows="2" style="width: 100%; resize: none;">{{ medico.nombre }}</textarea></td>
@@ -137,7 +137,7 @@
         <!--Tabla de Usuarios-->
         <div class="margin tabla-usuarios"  style="display: none;">
           <table>
-            <thead>
+            <thead class = 'table-header'>
               <tr>
                   <th>ID</th>
                   <th>Usuario</th>
@@ -147,7 +147,7 @@
             </thead>
             <tbody>
               {% for usuario in usuarios %}
-                <tr>
+                <tr class= 'table-row'>
                   <form action="{{ url_for('establecimientos')}}"  method="POST">
                     <td><textarea class="inputs-establecimiento" name="id" id="" rows="2" style="width: 100%; resize: none;">{{ usuario.id_medico }}</textarea></td>
                     <td><textarea class="inputs-establecimiento" name="usuario" id="" rows="2" style="width: 100%; resize: none;">{{ usuario.usuario }}</textarea></td>

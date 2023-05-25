@@ -106,7 +106,7 @@
         <!--Tabla de Usuarios-->
         <div class="margin tabla-PacVisitados"  style="display: none;">
           <table style="margin-bottom: 2rem;">
-            <thead>
+            <thead class="table-header">
               <tr>
                   <th>Visita</th>
                   <th>Nombre </th>
@@ -116,7 +116,7 @@
             </thead>
             <tbody>
               {% for paciente in pacientes %}
-                <tr>
+                <tr class="table-row">
                   <td>{{ paciente[0] }}</td>
                   <td>{{ paciente[1] }}</td>
                   <td>{{ paciente[2] }}</td>
