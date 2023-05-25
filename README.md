@@ -12,7 +12,7 @@ Instalar todas las dependencias del proyecto , se encuentran en el requierements
 ````sh
 pip install -r requirements.txt
 ````
-Ejecutar la app en localhost:
+Ejecutar la app en localhost: *DESCARGAR BRANCH DENOMIDANA LOCALHOST , MAIN ES PARA DESPLIEGE EN SERVER* 
 ````sh
 flask run
 ````
