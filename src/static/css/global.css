@@ -378,5 +378,21 @@ p{
     flex-direction: column;
     flex-wrap: wrap;
   }
-
+  .grid-items{
+    display: flex;
+    flex-wrap: wrap;
+    overflow-y: auto;
+    height: 100%;
+  }
+  .Text-bienvenida{
+    overflow-y: auto;
+    overflow-wrap: break-word ;
+   
+  }
+  .Text-bienvenida > h1 {
+    font-size: 30px;
+  }
+  #w-img{
+      visibility: hidden;
+  }
 }
